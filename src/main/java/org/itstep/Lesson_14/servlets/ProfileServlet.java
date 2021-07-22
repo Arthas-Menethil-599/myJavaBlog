@@ -1,17 +1,22 @@
 package org.itstep.Lesson_14.servlets;
 
+import org.itstep.Lesson_14.entities.User;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(value = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(value = "/profile")
+public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("USER_SESSION");
-        response.sendRedirect("/");
+        User currentUser = (User) request.getAttribute("USER");
+        if(currentUser != null) {
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("/login");
+        }
     }
 
     @Override

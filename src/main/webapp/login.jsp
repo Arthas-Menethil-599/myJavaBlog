@@ -33,7 +33,7 @@
           <label class="form-label">
             EMAIL:
           </label>
-          <input type="email" name="email" class="form-control" required />
+          <input type="email" name="email" class="form-control" required value= "<%=request.getParameter("email") != null ? request.getParameter("email") : ""%>" />
         </div>
         <div class="form-group">
           <label class="form-label">
