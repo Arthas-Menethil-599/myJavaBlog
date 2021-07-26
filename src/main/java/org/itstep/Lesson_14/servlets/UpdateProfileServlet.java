@@ -27,7 +27,8 @@ public class UpdateProfileServlet extends HttpServlet {
 
         if(user != null) {
             user.setFullName(fullName);
-            if(DbManager.addOrUpdateUser(Operations.UPDATE, user)) {
+            if(DbManager.addOrUpdate(Operations.UPDATE, user)) {
+                request.getSession().setAttribute("USER_SESSION", user);
                 redirect = "/profile?success";
             }
         }

@@ -30,7 +30,7 @@ public class UpdatePasswordServlet extends HttpServlet {
             if(newPassword.equals(confirmPassword)) {
                 user.setPassword(newPassword);
 
-                if(DbManager.addOrUpdateUser(Operations.UPDATE, user)) {
+                if(DbManager.addOrUpdate(Operations.UPDATE, user)) {
                     redirect = "/profile?success";
                 }
             }

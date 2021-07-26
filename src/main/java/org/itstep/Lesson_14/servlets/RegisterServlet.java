@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
         if(checkUser == null) {
             redirect = "/register?error=2";
             if(password.equals(confirmPassword)) {
-                DbManager.addOrUpdateUser(Operations.CREATE,new User(null,email, password, fullName));
+                DbManager.addOrUpdate(Operations.CREATE,new User(email, password, fullName));
                 redirect = "/register?success";
             }
         }
